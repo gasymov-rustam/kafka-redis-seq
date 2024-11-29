@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7E03FE31-F970-42DB-A640-54A661E0F839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaRedis.Api", "src\KafkaRedis.Api\KafkaRedis.Api.csproj", "{DFE4B084-E0C5-4707-B653-56799F684DF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaRedis.Domain", "src\KafkaRedis.Domain\KafkaRedis.Domain.csproj", "{92880528-1D7B-4A0C-8E0C-3B077DFE076B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaRedis.Infrastructure", "src\KafkaRedis.Infrastructure\KafkaRedis.Infrastructure.csproj", "{6167575F-832C-463B-BF36-E54D2E254915}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFE4B084-E0C5-4707-B653-56799F684DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE4B084-E0C5-4707-B653-56799F684DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE4B084-E0C5-4707-B653-56799F684DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE4B084-E0C5-4707-B653-56799F684DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92880528-1D7B-4A0C-8E0C-3B077DFE076B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92880528-1D7B-4A0C-8E0C-3B077DFE076B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92880528-1D7B-4A0C-8E0C-3B077DFE076B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92880528-1D7B-4A0C-8E0C-3B077DFE076B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6167575F-832C-463B-BF36-E54D2E254915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6167575F-832C-463B-BF36-E54D2E254915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6167575F-832C-463B-BF36-E54D2E254915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6167575F-832C-463B-BF36-E54D2E254915}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DFE4B084-E0C5-4707-B653-56799F684DF2} = {7E03FE31-F970-42DB-A640-54A661E0F839}
+		{92880528-1D7B-4A0C-8E0C-3B077DFE076B} = {7E03FE31-F970-42DB-A640-54A661E0F839}
+		{6167575F-832C-463B-BF36-E54D2E254915} = {7E03FE31-F970-42DB-A640-54A661E0F839}
+	EndGlobalSection
+EndGlobal
