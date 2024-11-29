@@ -1,9 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<!-- 
+  KafkaRedis.Infrastructure Project
+  This project contains infrastructure components for Kafka and Redis integration,
+  including logging services, extensions, and configuration settings.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Description>Infrastructure layer for KafkaRedis application, providing logging, messaging, and caching capabilities</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +18,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="9.0.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.8.22" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="6.0.0" />
     <ProjectReference Include="..\KafkaRedis.Domain\KafkaRedis.Domain.csproj" />
   </ItemGroup>
 

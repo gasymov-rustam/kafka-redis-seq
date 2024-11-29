@@ -1,4 +1,3 @@
-using Confluent.Kafka;
 using KafkaRedis.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 

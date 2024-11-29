@@ -50,5 +50,15 @@ services:
     depends_on:
       - redis
 
+  seq:
+    image: datalust/seq:latest
+    ports:
+      - "5341:80"
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - seq_data:/data
+
 volumes:
   redis_data:
+  seq_data:

@@ -20,11 +20,13 @@ graph TD
             IRS[IRedisService]
             IMS[IMessageSend]
             ICF[IKafkaConsumerFactory]
+            ILS[ILoggingService]
         end
 
         subgraph "Модели"
             KS[KafkaSettings]
             RS_SET[RedisSettings]
+            SS[SeqSettings]
         end
 
         subgraph "Команды"
@@ -42,6 +44,7 @@ graph TD
             MS[MessageSend]
             CF[KafkaConsumerFactory]
             Timer[MessageTimerService]
+            LS[LoggingService]
         end
 
         subgraph "Обработчики"
@@ -58,6 +61,7 @@ graph TD
         Redis[(Redis)]
         KafkaUI[Kafka UI]
         RedisCommander[Redis Commander]
+        Seq[Seq]
     end
 
     %% Реализация сервисов
@@ -66,12 +70,14 @@ graph TD
     RS -.implements.-> IRS
     MS -.implements.-> IMS
     CF -.implements.-> ICF
+    LS -.implements.-> ILS
 
     %% Зависимости сервисов
     KP -.uses.-> KS
     KC -.uses.-> KS
     RS -.uses.-> RS_SET
     KC -.uses.-> CF
+    LS -.uses.-> SS
 
     %% Поток сообщений
     Timer --triggers--> MS
@@ -85,6 +91,7 @@ graph TD
     KP --produces--> Kafka
     KC --consumes--> Kafka
     RS --caches--> Redis
+    LS --logs--> Seq
 
     %% Зависимости API
     API --> MediatR
@@ -95,8 +102,8 @@ graph TD
 
     %% Применение стилей
     class KP,KC,RS,MS,CF,Timer service
-    class IKP,IKC,IRS,IMS,ICF interface
-    class Kafka,Redis,KafkaUI,RedisCommander external
+    class IKP,IKC,IRS,IMS,ICF,ILS interface
+    class Kafka,Redis,KafkaUI,RedisCommander,Seq external
     class API component
     class MediatR mediator
     class PMC,CMC command
@@ -149,6 +156,37 @@ graph TD
 #### KafkaConsumerFactory
 - Создает потребителей Kafka
 - Управляет жизненным циклом потребителей
+
+## Инфраструктура логирования
+
+Приложение использует Serilog для структурированного логирования с интеграцией Seq. Инфраструктура логирования настроена в следующих компонентах:
+
+### Компоненты
+
+#### LoggingService
+- Расположен в `KafkaRedis.Infrastructure.Services`
+- Реализует интерфейс `ILoggingService`
+- Настраивает глобальный логгер Serilog с интеграцией Seq
+- Читает конфигурацию из appsettings.json
+- Выводит логи в консоль и сервер Seq
+
+#### LoggingExtensions
+- Расположен в `KafkaRedis.Infrastructure.Extensions`
+- Предоставляет методы расширения для настройки DI и middleware
+- `AddLoggingServices`: Настраивает сервисы логирования в DI контейнере
+- `UseLoggingMiddleware`: Настраивает логирование HTTP-запросов с обогащенным контекстом
+
+#### SeqSettings
+- Расположен в `KafkaRedis.Domain.Models`
+- Содержит конфигурацию сервера Seq
+- Настраивается через appsettings.json
+
+### Конфигурация
+Логирование настраивается через appsettings.json и включает:
+- URL сервера Seq
+- Уровни логирования
+- Вывод в консоль
+- Обогащение контекста запросов
 
 ## Паттерны проектирования
 - CQRS (через MediatR)

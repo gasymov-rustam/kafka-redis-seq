@@ -1,5 +1,4 @@
 using Confluent.Kafka;
-using KafkaRedis.Domain.Events;
 using KafkaRedis.Domain.Interfaces;
 using KafkaRedis.Domain.Models;
 using MediatR;
